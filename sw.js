@@ -1,4 +1,4 @@
-const CACHE='marketplace-demo-v6';
+const CACHE='marketplace-demo-v7';
 const ASSETS=['./','./index.html','./manifest-v3.webmanifest','./icon-nls-192.png','./icon-nls-512.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('marketplace-demo-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
